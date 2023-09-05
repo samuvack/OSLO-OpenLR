@@ -41,7 +41,7 @@ line_gdf = gpd.GeoDataFrame(geometry=[roadsegment])
 
 
 # Plotting using Matplotlib
-fig, ax = plt.subplots(figsize=(10, 8))
+fig, ax = plt.subplots(figsize=(10, 4))
 
 bounding_gdf = gpd.GeoDataFrame(
     geometry=[roadsegment])
