@@ -3,7 +3,7 @@ OpenLR OSLO converter
 
 ## XY2wegsegment
 This script searches for the closest road segment from a given shape file with multiple road segments (e.g. wegenregister, openstreetmap, etc.)
-Afterward, the script defines the projected point on the closest road segment.
+Afterwards, the script defines the projected point on the closest road segment.
 
 ![](https://github.com/samuvack/OSLO-OpenLR/blob/main/images/projected_point.png)
 
@@ -21,7 +21,7 @@ Available output:
 
 
 ## XY2virtualline
-This script calculates the virtual position of the measuring point between start and end point. Afterward, the virtual road segment is defined.
+This script calculates the virtual position of the measuring point between start and end point. Afterwards, the virtual road segment is defined.
 
 ![](https://github.com/samuvack/OSLO-OpenLR/blob/main/images/virtual_roadsegment.png)
 
