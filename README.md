@@ -25,6 +25,11 @@ This script calculates the virtual position of the measuring point between start
 
 ![](https://github.com/samuvack/OSLO-OpenLR/blob/main/images/virtual_roadsegment.png)
 
+## Direction2virtual line
+![](https://github.com/samuvack/OSLO-OpenLR/blob/main/images/direction2virtualline.png)
+
+
+
 ## latlon2wegsegment
 same as  XY2wegsegment, but with transforming from EPSG:4326 to EPSG:31370.
 
