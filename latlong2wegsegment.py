@@ -1,39 +1,21 @@
-import geopandas as gpd
-from shapely.geometry import Point, LineString
-import time
-start_time = time.time()
+import pyproj
 
-lines_gdf = gpd.read_file("./shape_wegsegment/Wegsegment.shp")
-lines_gdf.sindex
+# Define the input and output coordinate systems using EPSG codes
+# Example: EPSG code for Belgian Lambert 72
+input_crs = pyproj.CRS("EPSG:31370")
+# Example: EPSG code for WGS 84 (latitude/longitude)
+output_crs = pyproj.CRS("EPSG:4326")
 
-end_time = time.time()
-execution_time = end_time - start_time
-print("Execution time import read segments:", execution_time)
+# Define the point's coordinates in the input coordinate system
+input_x = 150000  # Replace with your input x-coordinate
+input_y = 170000  # Replace with your input y-coordinate
 
+# Create a pyproj Transformer for the conversion
+transformer = pyproj.Transformer.from_crs(
+    input_crs, output_crs, always_xy=True)
 
-x = 104562.25
-y = 193090.11
+# Perform the coordinate transformation
+output_x, output_y = transformer.transform(input_x, input_y)
 
-# Create a GeoDataFrame with a single example point in EPSG:31370 coordinate system
-point_data = {'geometry': [Point(x, y)]}
-point_gdf = gpd.GeoDataFrame(point_data, crs='EPSG:31370')
-
-# Initialize variables for finding the closest line
-closest_line = None
-min_distance = float('inf')
-
-# Loop through each line to find the closest one to the point
-for line in lines_gdf.geometry:
-    # Calculate the distance between the point and the current line
-    distance = point_gdf.geometry.iloc[0].distance(line)
-
-    # Update minimum distance and closest line
-    if distance < min_distance:
-        min_distance = distance
-        closest_line = line
-
-# Output the closest line and its distance to the point
-#print(f"The closest line to the point {x},{y} is {closest_line} with a distance of {min_distance}")
-print(str(closest_line).replace('LINESTRING (', '"Geometrie.gml": {"@value": "<gml:Point srsName=\"http:\\//www.opengis.net/def/crs/EPSG/0/31370\">').replace(')', '') +  '< gml: coordinates > </gml: coordinates > <gml: Point >, "@type": "geosparql:gmlliteral"')
-
-  
+print("Input Coordinates (EPSG:31370):", input_x, input_y)
+print("Output Coordinates (EPSG:4326):", output_x, output_y)
