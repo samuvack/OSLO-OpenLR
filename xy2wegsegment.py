@@ -57,6 +57,8 @@ print(last)
 
 output = [roadsegment, closest_line, first, last]
 
+print(output)
+
 # Find the nearest points on the LineString
 projected_point = nearest_points(closest_line, measuring_point)[0]
 
@@ -64,6 +66,7 @@ offset = closest_line.project(projected_point)
 print(offset)
 print(closest_line.length)
 
+print(closest_line)
 
 # Visualisation
 
